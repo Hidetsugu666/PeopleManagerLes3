@@ -7,7 +7,8 @@ namespace PeopleManager.Ui.Mvc.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var people = GetPeople();
+            return View(people);
         }
 
         public IList<Person> GetPeople()

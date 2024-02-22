@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IList<Person>
+
+@{
     ViewData["Title"] = "People List";
 }
 
@@ -13,12 +15,16 @@
     <tbody>
     
 
-    @for (int i = 0; i < 200; i++)
+    @foreach (var person in Model)
     {
         <tr>
-            <td>John</td>
-            <td>Doe</td>
-            <td>johndoe@example.com</td>
+            <td>@person.FirstName</td>
+            <td>@person.LastName</td>
+            <td>@if(!string.IsNullOrWhiteSpace(person.Email))
+                {
+                    <a href="mailto:@person.Email">@person.Email</a>
+                }
+            </td>
         </tr>
     }
     </tbody>
